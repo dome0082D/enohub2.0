@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react' // O il plugin che stai usando (es. vue, svelte)
+import react from '@vitejs/plugin-react'
 import path from 'path'
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -9,10 +10,17 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Questa è la parte che risolve l'errore su Render
-  preview: {
-    allowedHosts: true
-  },
+  // Configurazione per accettare l'host di Render
   server: {
-    allowedHosts: true
+    allowedHosts: [
+      'enohub2-0.onrender.com',
+      '.onrender.com'
+    ]
+  },
+  preview: {
+    allowedHosts: [
+      'enohub2-0.onrender.com',
+      '.onrender.com'
+    ]
   }
+})
